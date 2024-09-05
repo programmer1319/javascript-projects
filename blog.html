@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Add Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      scroll-behavior: smooth;
+    }
+
+    .blog-header {
+      padding: 60px;
+    }
+
+    .blog-header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .blog-content {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .blog-content article {
+      padding: 20px;
+      border: 1px solid #e9ecef;
+      border-radius: 10px;
+      background-color: #f8f9fa;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .theme-toggle-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1000;
+      border: 1px solid #0d6efd;
+    }
+
+    .dark-mode {
+      background-color: #121212;
+      color: #fff;
+    }
+
+    .dark-mode .blog-header {
+      background-color: #202020;
+    }
+
+    .dark-mode .blog-content article {
+      background-color: #282828;
+    }
+
+    .dark-mode .theme-toggle-btn {
+      background-color: #fff;
+      color: #000;
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Your Name</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Search Bar -->
+  <div class="container mb-4">
+    <input type="text" class="form-control search-input" placeholder="Search articles...">
+  </div>
+
+  <!-- Blog Header -->
+  <header class="blog-header bg-primary text-white text-center p-5 mb-5">
+    <h1>Welcome to My Blog</h1>
+    <p>Sharing insights, thoughts, and tutorials about web development, design, and tech trends.</p>
+  </header>
+
+  <!-- Blog Content -->
+  <section class="blog-content container">
+    <article class="mb-5">
+      <h2>Understanding Responsive Web Design</h2>
+      <p class="text-muted">Posted on September 4, 2024 | By Jane Doe</p>
+      <p>Responsive web design ensures that web pages render well on a variety of devices and window or screen
+        sizes. In this blog, we’ll discuss the core principles and strategies to make your websites
+        mobile-friendly and responsive.</p>
+      <h4>Why is Responsive Design Important?</h4>
+      <p>With mobile internet usage growing rapidly, it’s essential for websites to be accessible on all devices. A
+        responsive design enhances user experience by adjusting the layout dynamically based on screen size.</p>
+      <h4>Key Components of Responsive Design</h4>
+      <ul>
+        <li><strong>Fluid Grid Layout:</strong> Flexible grids that adapt to the screen’s width.</li>
+        <li><strong>Media Queries:</strong> CSS techniques used to apply different styles based on device
+          characteristics.</li>
+        <li><strong>Flexible Images:</strong> Images that scale and resize according to the screen.</li>
+      </ul>
+      <p>By implementing these components, you’ll ensure that your websites provide a smooth experience across
+        devices.</p>
+    </article>
+
+    <article class="mb-5">
+      <h2>Top 5 Web Development Trends to Watch in 2024</h2>
+      <p class="text-muted">Posted on August 20, 2024 | By Jane Doe</p>
+      <p>The web development landscape is constantly evolving. In this post, we’ll look at the top trends that
+        developers should keep an eye on in 2024.</p>
+      <ol>
+        <li><strong>Progressive Web Apps (PWAs):</strong> A blend of web and mobile app experiences.</li>
+        <li><strong>Serverless Architecture:</strong> Building apps without managing backend infrastructure.</li>
+        <li><strong>AI-Powered Chatbots:</strong> Integrating AI to enhance customer interaction on websites.
+        </li>
+        <li><strong>Voice Search Optimization:</strong> Optimizing content for voice-activated search.</li>
+        <li><strong>Motion UI:</strong> Adding dynamic elements to improve user engagement.</li>
+      </ol>
+      <p>Embrace these trends to stay ahead in the fast-paced world of web development.</p>
+    </article>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2024 My Blog | Designed with Bootstrap 5</p>
+  </footer>
+
+  <!-- Add Theme Toggle Button -->
+  <button class="theme-toggle-btn">
+    <i class="fas fa-sun"></i>
+  </button>
+
+  <!-- JS: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS: Theme Toggle & Search -->
+  <script>
+    const themeToggleBtn = document.querySelector('.theme-toggle-btn');
+    const searchInput = document.querySelector('.search-input');
+
+    // Dark Mode Toggle
+    themeToggleBtn.addEventListener('click', function () {
+      document.body.classList.toggle('dark-mode');
+
+      if (document.body.classList.contains('dark-mode')) {
+        this.querySelector('i').classList.replace('fa-sun', 'fa-moon');
+      } else {
+        this.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+      }
+    });
+
+    // Search Functionality
+    searchInput.addEventListener('keyup', function () {
+      const searchTerm = this.value.toLowerCase();
+      const articles = document.querySelectorAll('.blog-content article');
+      articles.forEach(article => {
+        const articleTitle = article.querySelector('h2').textContent.toLowerCase();
+        if (articleTitle.includes(searchTerm)) {
+          article.style.display = 'block';
+        } else {
+          article.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

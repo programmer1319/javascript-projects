@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .photo-card {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .photo-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-card img {
+            border-radius: 5px 5px 0 0;
+        }
+
+        .photo-card-title {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .lightbox-content {
+            position: relative;
+        }
+
+        .lightbox-image {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 5px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Your Name</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white text-center p-5 mb-5">
+        <h1>Your Photo Gallery</h1>
+        <p>Explore a collection of captivating images.</p>
+    </header>
+
+    <section class="container mb-5">
+        <div class="text-center mb-4">
+            <button class="btn btn-primary filter-btn" data-filter="all">All Photos</button>
+            <button class="btn btn-secondary filter-btn" data-filter="landscape">Landscapes</button>
+            <button class="btn btn-success filter-btn" data-filter="portrait">Portraits</button>
+            <button class="btn btn-danger filter-btn" data-filter="wildlife">Wildlife</button>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card photo-card" data-type="landscape">
+                    <img src="your_image_1.jpg" class="card-img-top" alt="Image description">
+                    <div class="card-body photo-card-title">
+                        <h5 class="card-title">Photo Title 1</h5>
+                        <p class="card-text">A breathtaking landscape photo of the mountains at sunset.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card photo-card" data-type="portrait">
+                    <img src="your_image_2.jpg" class="card-img-top" alt="Image description">
+                    <div class="card-body photo-card-title">
+                        <h5 class="card-title">Photo Title 2</h5>
+                        <p class="card-text">A close-up shot of a beautiful flower with vibrant colors.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card photo-card" data-type="wildlife">
+                    <img src="your_image_3.jpg" class="card-img-top" alt="Image description">
+                    <div class="card-body photo-card-title">
+                        <h5 class="card-title">Photo Title 3</h5>
+                        <p class="card-text">A playful photo of a puppy running through a field of wildflowers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card photo-card" data-type="portrait">
+                    <img src="your_image_4.jpg" class="card-img-top" alt="Image description">
+                    <div class="card-body photo-card-title">
+                        <h5 class="card-title">Photo Title 4</h5>
+                        <p class="card-text">A stunning portrait of a person with a captivating expression.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card photo-card" data-type="landscape">
+                    <img src="your_image_5.jpg" class="card-img-top" alt="Image description">
+                    <div class="card-body photo-card-title">
+                        <h5 class="card-title">Photo Title 5</h5>
+                        <p class="card-text">A photo of a city skyline at night, with vibrant lights.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card photo-card" data-type="wildlife">
+                    <img src="your_image_6.jpg" class="card-img-top" alt="Image description">
+                    <div class="card-body photo-card-title">
+                        <h5 class="card-title">Photo Title 6</h5>
+                        <p class="card-text">A photo of a serene beach scene with gentle waves.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox HTML -->
+    <div class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-image" src="" alt="Lightbox Image">
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Photo Gallery</p>
+    </footer>
+
+    <!-- JavaScript for Lightbox and Filtering -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lightbox functionality
+            const lightbox = document.querySelector('.lightbox');
+            const lightboxImage = lightbox.querySelector('.lightbox-image');
+            const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+            document.querySelectorAll('.photo-card img').forEach(img => {
+                img.addEventListener('click', () => {
+                    lightboxImage.src = img.src;
+                    lightbox.style.display = 'flex';
+                });
+            });
+
+            lightboxClose.addEventListener('click', () => {
+                lightbox.style.display = 'none';
+            });
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                }
+            });
+
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const photoCards = document.querySelectorAll('.photo-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filterValue = button.getAttribute('data-filter');
+                    photoCards.forEach(card => {
+                        const cardType = card.getAttribute('data-type');
+                        if (filterValue === 'all' || cardType === filterValue) {
+                            card.parentElement.style.display = 'block';
+                        } else {
+                            card.parentElement.style.display = 'none';
+                        }
+                    });
+
+                    // Force Bootstrap to rearrange the grid
+                    const row = document.querySelector('.row');
+                    row.style.display = 'none';
+                    row.offsetHeight; // Trigger reflow
+                    row.style.display = 'flex';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

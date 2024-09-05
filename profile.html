@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name | Web Developer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" class="btn btn-primary" style="position:fixed; bottom: 30px; right: 30px; display: none;">
+    ↑ Top
+  </button>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4 sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Your Name</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Theme Toggle Button -->
+      <button id="themeToggle" class="btn btn-outline-secondary ms-3">Dark Mode</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h1 class="display-4 mb-4">Your Name</h1>
+          <p class="lead mb-4">A passionate web developer and technology enthusiast.</p>
+          <a href="contact.html" class="btn btn-primary">Contact Me</a>
+        </div>
+        <div class="col-md-6">
+          <img src="profile.jpg" alt="Your Profile Picture" class="img-fluid rounded-circle mx-auto d-block">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section class="container mb-5">
+    <h2 class="text-center mb-4">About Me</h2>
+    <div class="row">
+      <div class="col-md-12">
+        <p class="lead">Hi, I'm [Your Name], a web developer with a focus on front-end technologies and a passion for
+          building responsive and user-friendly websites...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills and Projects Section -->
+  <section class="container mb-5">
+    <div class="row">
+      <!-- Skills -->
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2 class="card-title">Skills</h2>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Front-End Technologies:</strong> HTML5, CSS3, JavaScript</li>
+              <li class="list-group-item"><strong>Frameworks:</strong> Bootstrap, React, Vue.js</li>
+              <li class="list-group-item"><strong>Back-End Technologies:</strong> PHP, Laravel, MySQL</li>
+              <li class="list-group-item"><strong>Additional Skills:</strong> Git, Docker, API Integration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Projects -->
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2 class="card-title">Projects</h2>
+            <!-- Project Filter Input -->
+            <input type="text" id="filterInput" class="form-control mb-3" placeholder="Filter Projects by Keyword">
+
+            <ul id="projectList" class="list-group list-group-flush">
+              <li class="list-group-item">
+                <h3 class="card-title">Table of Contents</h3>
+                <p>Organize and present structured content in a clean table of contents format.</p>
+                <a href="toc.html" class="btn btn-primary">View Project</a>
+              </li>
+              <li class="list-group-item">
+                <h3 class="card-title">Recipe Page</h3>
+                <p>Share your favorite recipes with detailed ingredient lists and step-by-step instructions.</p>
+                <a href="recipe.html" class="btn btn-primary">View Project</a>
+              </li>
+              <li class="list-group-item">
+                <h3 class="card-title">Photo Gallery</h3>
+                <p>Create a modern and responsive photo gallery to display images in an elegant manner.</p>
+                <a href="gallery.html" class="btn btn-primary">View Project</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2024 Your Name</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let footer = document.querySelector('footer');
+      // Theme Toggle
+      const themeToggleBtn = document.getElementById('themeToggle');
+      themeToggleBtn.addEventListener('click', function () {
+        document.body.classList.toggle('bg-dark');
+        document.body.classList.toggle('text-white');
+        themeToggleBtn.textContent = document.body.classList.contains('bg-dark') ? 'Light Mode' : 'Dark Mode';
+        if (document.body.classList.contains('bg-dark')) {
+          footer.classList.add('bg-light', 'text-black');
+          footer.classList.remove('bg-dark', 'text-white');
+        } else {
+          footer.classList.add('bg-dark', 'text-white');
+          footer.classList.remove('bg-light', 'text-black');
+        }
+      });
+
+      // Scroll to Top Button
+      const scrollTopBtn = document.getElementById('scrollTopBtn');
+      window.addEventListener('scroll', function () {
+        if (window.pageYOffset > 300) {
+          scrollTopBtn.style.display = 'block';
+        } else {
+          scrollTopBtn.style.display = 'none';
+        }
+      });
+
+      scrollTopBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Project Filter
+      const filterInput = document.getElementById('filterInput');
+      const projectList = document.querySelectorAll('#projectList li');
+
+      filterInput.addEventListener('input', function () {
+        const filterValue = filterInput.value.toLowerCase();
+        projectList.forEach(project => {
+          const projectTitle = project.querySelector('h3').textContent.toLowerCase();
+          project.style.display = projectTitle.includes(filterValue) ? '' : 'none';
+        });
+      });
+
+    });
+
+  </script>
+</body>
+
+</html>

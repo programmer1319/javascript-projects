@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Projects Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <!-- Header Section -->
+    <header class="bg-primary text-white text-center p-5 mb-5">
+        <h1>Bootstrap Project Hub</h1>
+        <p>Your collection of creative projects built with HTML5</p>
+        <!-- Theme Toggle Button (Added in HTML) -->
+        <button id="themeToggle" class="btn btn-success mt-3">Dark Mode</button>
+    </header>
+
+    <!-- Main Navigation Section -->
+    <section class="container my-5">
+        <!-- Filter Input Field (Added in HTML) -->
+        <input type="text" id="filterInput" class="form-control mb-4" placeholder="Filter Projects...">
+
+        <div class="row text-center g-4">
+            <!-- Existing Project Cards -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Personal Profile</h3>
+                        <p class="card-text">Showcase a brief about yourself, your skills, and your education in a
+                            professional profile format.</p>
+                        <a href="profile.html" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Simple Blog</h3>
+                        <p class="card-text">Write your thoughts, articles, or tutorials with a structured blog format.
+                        </p>
+                        <a href="blog.html" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Photo Gallery</h3>
+                        <p class="card-text">Create a responsive and modern photo gallery to display your favorite
+                            images.</p>
+                        <a href="gallery.html" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Additional Links Section Styled as Cards -->
+        <div class="row text-center g-4 mt-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Contact Form</h3>
+                        <p class="card-text">Fill out the form to get in touch with us. We’re here to help with any
+                            inquiries you may have.</p>
+                        <a href="contact.html" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Event Schedule</h3>
+                        <p class="card-text">Check out our upcoming events and stay updated with the latest schedules.
+                        </p>
+                        <a href="event.html" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Product Listing Page</h3>
+                        <p class="card-text">Browse through our product catalog to find the items you’re interested in.
+                        </p>
+                        <a href="products.html" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">FAQ Page</h3>
+                        <p class="card-text">Find answers to the most common questions about our services and products.
+                        </p>
+                        <a href="faq.html" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 HTML5 Projects | Designed with Bootstrap 5</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Theme Toggle Functionality
+            const themeToggleBtn = document.getElementById('themeToggle');
+            themeToggleBtn.addEventListener('click', function () {
+                document.body.classList.toggle('bg-dark');
+                document.body.classList.toggle('text-white');
+                themeToggleBtn.textContent = document.body.classList.contains('bg-dark') ? 'Light Mode' : 'Dark Mode';
+            });
+
+            // Project Filter Functionality
+            const filterInput = document.getElementById('filterInput');
+            const projectCards = document.querySelectorAll('.card');
+
+            filterInput.addEventListener('input', function () {
+                const filterValue = filterInput.value.toLowerCase();
+                projectCards.forEach(card => {
+                    const cardTitle = card.querySelector('.card-title').textContent.toLowerCase();
+                    // Show or hide the card based on the filter input
+                    card.parentElement.style.display = cardTitle.includes(filterValue) ? '' : 'none';
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>

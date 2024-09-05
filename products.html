@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Your Name</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="bg-primary text-white text-center p-5 mb-5">
+        <h1>Product Listing</h1>
+        <p>Explore our range of products</p>
+    </header>
+
+    <!-- Search Section -->
+    <section class="container mb-4">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <input type="text" id="search" class="form-control" placeholder="Search for products...">
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Listing Content -->
+    <section class="container">
+        <div class="row" id="product-list">
+            <div class="col-md-4">
+                <div class="card mb-4" data-product='{"title": "Product 1", "description": "This is a brief description of Product 1."}'>
+                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 1</h5>
+                        <p class="card-text">This is a brief description of Product 1.</p>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Product 1" data-description="This is a brief description of Product 1.">More Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4" data-product='{"title": "Product 2", "description": "This is a brief description of Product 2."}'>
+                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 2</h5>
+                        <p class="card-text">This is a brief description of Product 2.</p>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Product 2" data-description="This is a brief description of Product 2.">More Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4" data-product='{"title": "Product 3", "description": "This is a brief description of Product 3."}'>
+                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="Product 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 3</h5>
+                        <p class="card-text">This is a brief description of Product 3.</p>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal" data-title="Product 3" data-description="This is a brief description of Product 3.">More Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Product details will be dynamically injected here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Product Listing</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('search');
+            const productCards = document.querySelectorAll('.card');
+            const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+            const modalTitle = document.getElementById('productModalLabel');
+            const modalBody = document.querySelector('#productModal .modal-body');
+
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                const searchTerm = searchInput.value.toLowerCase();
+                productCards.forEach(card => {
+                    const productName = card.querySelector('.card-title').textContent.toLowerCase();
+                    if (productName.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // Modal functionality
+            productCards.forEach(card => {
+                const moreDetailsButton = card.querySelector('.btn-primary');
+                moreDetailsButton.addEventListener('click', function() {
+                    const title = moreDetailsButton.getAttribute('data-title');
+                    const description = moreDetailsButton.getAttribute('data-description');
+                    modalTitle.textContent = title;
+                    modalBody.innerHTML = `<p>${description}</p>`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

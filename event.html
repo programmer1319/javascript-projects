@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Schedule</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+  <style>
+    /* Optional custom styles for further design customization */
+    .event-card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+      margin-bottom: 2rem;
+    }
+
+    .event-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .event-card h4 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .event-card p {
+      margin-bottom: 0.5rem;
+    }
+
+    .event-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .event-details i {
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+      color: #2d4054;
+    }
+
+    .btn-primary {
+      background-color: #2d4054;
+      border-color: #2d4054;
+    }
+
+    .btn-primary:hover {
+      background-color: #1a2837;
+      border-color: #1a2837;
+    }
+
+    .hero {
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Your Name</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero bg-primary text-white text-center p-5 d-flex flex-column justify-content-center align-items-center">
+    <h1>Event Schedule</h1>
+    <p>Get excited for upcoming events!</p>
+  </header>
+
+  <section class="container mt-5">
+    <h2>Upcoming Events</h2>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col">
+        <div class="card event-card">
+          <h4>Web Development Workshop</h4>
+          <div class="event-details">
+            <p><i class="fas fa-calendar-alt"></i> Date: September 15, 2024</p>
+            <p><i class="fas fa-clock"></i> Time: 10:00 AM - 4:00 PM</p>
+            <p><i class="fas fa-map-marker-alt"></i> Location: Tech Center, Room 204</p>
+            <p>Description: Learn essential web development skills from industry experts. Gain hands-on experience building a simple web application.</p>
+            <a href="registration.html" class="btn btn-primary btn-sm">Register Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card event-card">
+          <h4>UX Design Seminar</h4>
+          <div class="event-details">
+            <p><i class="fas fa-calendar-alt"></i> Date: October 5, 2024</p>
+            <p><i class="fas fa-clock"></i> Time: 1:00 PM - 3:00 PM</p>
+            <p><i class="fas fa-map-marker-alt"></i> Location: Innovation Hall, Auditorium</p>
+            <p>Description: Discover the fundamentals of user experience design and crafting user-centered interfaces. Learn how to design for usability and improve user engagement.</p>
+            <a href="registration.html" class="btn btn-primary btn-sm">Register Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card event-card">
+          <h4>Networking Event</h4>
+          <div class="event-details">
+            <p><i class="fas fa-calendar-alt"></i> Date: November 12, 2024</p>
+            <p><i class="fas fa-clock"></i> Time: 6:00 PM - 9:00 PM</p>
+            <p><i class="fas fa-map-marker-alt"></i> Location: City Lounge, Main Hall</p>
+            <p>Description: Connect with industry professionals and fellow attendees. Expand your network and explore potential career opportunities.</p>
+            <a href="registration.html" class="btn btn-primary btn-sm">Register Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2024 Event Schedule</p>
+  </footer>
+</body>
+
+</html>
